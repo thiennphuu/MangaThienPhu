@@ -1,0 +1,9 @@
+import { RightOutlined, ThunderboltFilled } from "@ant-design/icons";
+import { continueReading, featuredManga } from "../../features/dashboard/dashboard-data";
+import { MangaCard } from "../../components/manga/MangaCard";
+
+export function OverviewPage({ onStartReading = () => {}, onOpenLibrary = () => {} }: { onStartReading?: (manga: typeof featuredManga) => void; onOpenLibrary?: () => void }) {
+  return <div className="content-wrap"><div className="welcome-row"><div><p className="eyebrow">Your daily escape</p><h1>The next chapter is yours, Alex.</h1><p className="subtitle">Pick up where you left off. There&apos;s a whole world waiting.</p></div><span className="streak"><ThunderboltFilled /> 12-day streak</span></div><section className="spotlight"><div><p className="eyebrow">Tonight&apos;s spotlight</p><h2>{featuredManga.title}</h2><p>When the city sleeps, its secrets wake up.<br />Follow the signal into the unknown.</p><p className="spotlight-meta">{featuredManga.genres.join(" · ")} · {featuredManga.chapters}</p><button className="primary-button" onClick={() => onStartReading(featuredManga)}>Start reading <RightOutlined /></button></div></section><div className="section-heading"><h2>Continue reading</h2><button className="section-link" onClick={onOpenLibrary}>Your library →</button></div><div className="cover-grid">{continueReading.map((manga) => <MangaCard key={manga.title} manga={manga} onContinue={() => onStartReading(manga)} />)}</div><section className="reading-activity"><div><p className="eyebrow">Reading activity</p><h2>Your reading rhythm</h2><p className="activity-copy">Keep your momentum going with a little reading every day.</p></div><div className="activity-stats"><div><strong>12</strong><span>day streak</span></div><div><strong>4</strong><span>chapters this week</span></div><div><strong>2.5h</strong><span>reading time</span></div></div></section></div>;
+}
+
+export default OverviewPage;

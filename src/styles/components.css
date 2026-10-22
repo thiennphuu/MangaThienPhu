@@ -1,0 +1,1 @@
+.ui-button { border: 1px solid var(--line); border-radius: 5px; padding: 8px 12px; background: transparent; color: var(--text); cursor: pointer; font-size: 11px; }.ui-button-primary { border-color: var(--lime); background: var(--lime); color: #17200e; }.ui-input { border: 0; outline: 0; background: transparent; color: var(--text); font: inherit; }
