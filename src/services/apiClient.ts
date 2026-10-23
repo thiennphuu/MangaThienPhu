@@ -17,6 +17,16 @@ export async function apiClient<T>(
   if (!response.ok) {
     throw new Error(`API request failed with status ${response.status}`);
   }
-
   return (await response.json()) as T;
+}
+
+export function buildQuery(
+  params: Record<string, string | number | undefined>,
+): string {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([key, value]) => {
+    if (value !== undefined && value !== "") searchParams.set(key, String(value));
+  });
+  const query = searchParams.toString();
+  return query ? `?${query}` : "";
 }

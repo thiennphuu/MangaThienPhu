@@ -1,6 +1,7 @@
 import { RightOutlined } from "@ant-design/icons";
 import { Button } from "../../../components/ui/Button";
+import type { Manga } from "../../../types/common";
 
-export function FeaturedManga() {
-  return <section className="discover-feature"><div className="discover-feature-copy"><p className="eyebrow">Featured</p><h2>Eclipse City</h2><div className="tag-row"><span>Sci-Fi</span><span>Mystery</span></div><p>In a city where the sun never rises, a detective uncovers a conspiracy that could destroy the last hope for humanity.</p><Button variant="primary">View details <RightOutlined /></Button></div><div className="discover-feature-art" /></section>;
+export function FeaturedManga({ manga }: { manga: Manga }) {
+  return <section className="discover-feature"><div className="discover-feature-copy"><p className="eyebrow">Featured</p><h2>{manga.title}</h2><div className="tag-row">{manga.genres.map((genre) => <span key={genre}>{genre}</span>)}</div><p>{manga.description}</p><Button variant="primary">View details <RightOutlined /></Button></div><div className="discover-feature-art" style={{ backgroundImage: `url(${manga.coverUrl})` }} /></section>;
 }

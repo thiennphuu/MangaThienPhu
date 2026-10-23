@@ -4,12 +4,11 @@ import { useState } from "react";
 import { MainLayout } from "../layouts/MainLayout";
 import { Router } from "./router";
 import { useDashboardNavigation } from "../hooks/useDashboardNavigation";
-import { continueReading } from "../features/dashboard/dashboard-data";
 import type { Manga } from "../types/common";
 
 export default function App() {
   const [query, setQuery] = useState("");
-  const [readerManga, setReaderManga] = useState<Manga>(continueReading[0]);
+  const [readerManga, setReaderManga] = useState<Manga | null>(null);
   const { view, openView } = useDashboardNavigation();
   const startReading = (manga: Manga) => {
     setReaderManga(manga);

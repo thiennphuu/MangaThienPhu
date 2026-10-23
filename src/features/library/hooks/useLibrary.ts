@@ -1,6 +1,10 @@
-import { useMemo } from "react";
+import { useCallback } from "react";
 import { useDebounce } from "../../../hooks/useDebounce";
+import { useApiResource } from "../../../hooks/useApiResource";
+import { libraryService } from "../../../services/libraryService";
 
 export function useLibrary(query: string) {
-  return useMemo(() => useDebounce(query).trim().toLowerCase(), [query]);
+  const debouncedQuery = useDebounce(query);
+  const loader = useCallback(() => libraryService.getMine({ search: debouncedQuery }), [debouncedQuery]);
+  return useApiResource(loader);
 }
