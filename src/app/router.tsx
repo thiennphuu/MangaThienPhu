@@ -1,8 +1,8 @@
 import type { ViewName } from "../types/common";
-import { OverviewPage } from "../pages/Overview/OverviewPage";
-import { DiscoverPage } from "../pages/Discover/DiscoverPage";
-import { MyLibraryPage } from "../pages/MyLibrary/MyLibraryPage";
-import { ReaderPage } from "../pages/Reader/ReaderPage";
+import { OverviewPage } from "../page-components/Overview/OverviewPage";
+import { DiscoverPage } from "../page-components/Discover/DiscoverPage";
+import { MyLibraryPage } from "../page-components/MyLibrary/MyLibraryPage";
+import { ReaderPage } from "../page-components/Reader/ReaderPage";
 import type { Manga } from "../types/common";
 
 export function Router({ view, query, onQueryChange, readerManga, onStartReading, onOpenLibrary }: { view: ViewName; query: string; onQueryChange: (value: string) => void; readerManga: Manga | null; onStartReading: (manga: Manga) => void; onOpenLibrary: () => void }) {

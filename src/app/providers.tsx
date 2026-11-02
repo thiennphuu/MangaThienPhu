@@ -2,7 +2,12 @@
 
 import type { ReactNode } from "react";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { AuthProvider } from "../features/auth/AuthContext";
 
 export function Providers({ children }: { children: ReactNode }) {
-  return <AntdRegistry>{children}</AntdRegistry>;
+  return (
+    <AntdRegistry>
+      <AuthProvider>{children}</AuthProvider>
+    </AntdRegistry>
+  );
 }
